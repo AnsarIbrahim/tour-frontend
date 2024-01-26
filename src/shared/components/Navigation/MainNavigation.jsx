@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 import MainHeader from "./MainHeader";
 import NavLinks from "./NavLinks";
@@ -8,7 +7,7 @@ import SideDrawer from "./SideDrawer";
 import Backdrop from "../UIElements/Backdrop";
 import "./CSS/MainNavigation.css";
 
-const MainNavigation = (props) => {
+const MainNavigation = () => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
   const openDrawerHandler = () => setDrawerIsOpen(true);
@@ -41,10 +40,6 @@ const MainNavigation = (props) => {
       </MainHeader>
     </>
   );
-};
-
-MainNavigation.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default MainNavigation;

@@ -1,14 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink } from "react-router-dom";
 
 import "./CSS/NavLinks.css";
 
-const NavLinks = (props) => {
+const NavLinks = () => {
   return (
     <ul className="nav-links">
       <li>
-        <NavLink to="/" exact>
+        <NavLink to="/" exact="true">
           All Users
         </NavLink>
       </li>
@@ -23,10 +22,6 @@ const NavLinks = (props) => {
       </li>
     </ul>
   );
-};
-
-NavLinks.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default NavLinks;

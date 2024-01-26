@@ -1,9 +1,9 @@
 import "./App.css";
 import {
   BrowserRouter as Router,
+  Routes,
   Route,
-  Redirect,
-  Switch,
+  useNavigate,
 } from "react-router-dom";
 
 import Users from "./user/pages/Users";
@@ -16,21 +16,21 @@ const App = () => {
     <Router>
       <MainNavigation />
       <main>
-        <Switch>
-          <Route path="/" exact>
-            <Users />
-          </Route>
-          <Route path="/:userId/places" exact>
-            <UserPlaces />
-          </Route>
-          <Route path="/places/new" exact>
-            <NewPlace />
-          </Route>
-          <Redirect to="/" />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Users />} />
+          <Route path="/:userId/places" element={<UserPlaces />} />
+          <Route path="/places/new" element={<NewPlace />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
     </Router>
   );
+};
+
+const NotFound = () => {
+  let navigate = useNavigate();
+  navigate("/");
+  return null;
 };
 
 export default App;
