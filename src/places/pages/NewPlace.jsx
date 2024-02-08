@@ -16,6 +16,7 @@ import { AuthContext } from "../../shared/context/Auth-Context";
 import "./PlaceForm.css";
 
 const NewPlace = () => {
+  const backendUrl = process.env.REACT_APP_BACEND_URL;
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const NewPlace = () => {
       formData.append("description", formState.inputs.description.value);
       formData.append("address", formState.inputs.address.value);
       formData.append("image", formState.inputs.image.value);
-      await sendRequest("http://localhost:5000/api/places", "POST", formData, {
+      await sendRequest(backendUrl + "/places", "POST", formData, {
         Authorization: "Bearer " + auth.token,
       });
       navigate("/");

@@ -7,6 +7,7 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 
 const UserPlaces = () => {
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const [loadedPlaces, setLoadedPlaces] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -16,13 +17,13 @@ const UserPlaces = () => {
     const fetchPlaces = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/places/user/${userId}`
+          `${backendUrl}/places/user/${userId}`
         );
         setLoadedPlaces(responseData.place);
       } catch (error) {}
     };
     fetchPlaces();
-  }, [sendRequest, userId]);
+  }, [sendRequest, userId, backendUrl]);
 
   const placeDeleteHandler = (deletedPlaceId) => {
     setLoadedPlaces((prevPlaces) =>

@@ -6,21 +6,20 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 
 const Users = () => {
+  const baseUrl = process.env.REACT_APP_BACKEND_URL;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedUsers, setLoadedUsers] = useState();
 
   useEffect(() => {
     const fetchusers = async () => {
       try {
-        const responseData = await sendRequest(
-          "http://localhost:5000/api/users"
-        );
+        const responseData = await sendRequest(baseUrl + "/users");
 
         setLoadedUsers(responseData.users);
       } catch (error) {}
     };
     fetchusers();
-  }, [sendRequest]);
+  }, [sendRequest, baseUrl]);
 
   return (
     <>

@@ -4,8 +4,7 @@ import mapboxgl from "mapbox-gl";
 
 import "./Map.css";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiYW5zYXJpYnJhaGltIiwiYSI6ImNscW0ybmc0NjAxc2YyaXNicGtzM25saXcifQ.G9cUWgFtRkJlVN7XID3_ZQ"; // Replace with your Mapbox access token
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
 const Map = (props) => {
   const mapContainerRef = useRef(null);
