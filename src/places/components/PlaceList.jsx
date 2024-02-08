@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import Card from "../../shared/components/UIElements/Card";
 import PlaceItem from "./PlaceItem";
@@ -37,10 +36,6 @@ const PlaceList = (props) => {
       })}
     </ul>
   );
-};
-
-PlaceList.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default PlaceList;
