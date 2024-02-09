@@ -13,9 +13,11 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import { AuthContext } from "../../shared/context/Auth-Context";
+import { BaseUrl } from "../../Redux/BaseUrl";
 import "./PlaceForm.css";
 
 const UpdatePlaces = () => {
+  const backendUrl = BaseUrl;
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedPlace, setLoadedPlace] = useState();
@@ -40,7 +42,7 @@ const UpdatePlaces = () => {
     const fetchPlace = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/places/${placeId}`
+          `${backendUrl}/places/${placeId}`
         );
         setLoadedPlace(responseData.place);
         setFormData(
@@ -59,13 +61,13 @@ const UpdatePlaces = () => {
       } catch (error) {}
     };
     fetchPlace();
-  }, [sendRequest, placeId, setFormData]);
+  }, [sendRequest, placeId, setFormData, backendUrl]);
 
   const placeUpdateSubmitHandler = async (event) => {
     event.preventDefault();
     try {
       await sendRequest(
-        "http://localhost:5000/api/places/" + placeId,
+        `${backendUrl}/places/${placeId}`,
         "PATCH",
         JSON.stringify({
           title: formState.inputs.title.value,
@@ -77,6 +79,7 @@ const UpdatePlaces = () => {
         }
       );
       navigate(`/${loadedPlace.creator}/places`);
+      console.log(loadedPlace.creator);
     } catch (error) {}
   };
 

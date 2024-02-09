@@ -4,23 +4,23 @@ import UserList from "../components/UserList";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { BaseUrl } from "../../Redux/BaseUrl";
 
 const Users = () => {
+  const baseUrl = BaseUrl;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedUsers, setLoadedUsers] = useState();
 
   useEffect(() => {
     const fetchusers = async () => {
       try {
-        const responseData = await sendRequest(
-          "http://localhost:5000/api/users"
-        );
+        const responseData = await sendRequest(`${baseUrl}/users`);
 
         setLoadedUsers(responseData.users);
       } catch (error) {}
     };
     fetchusers();
-  }, [sendRequest]);
+  }, [sendRequest, baseUrl]);
 
   return (
     <>

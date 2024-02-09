@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import mapboxgl from "mapbox-gl";
 
 import "./Map.css";
+import { APIKey } from "../../../Redux/BaseUrl";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiYW5zYXJpYnJhaGltIiwiYSI6ImNscW0ybmc0NjAxc2YyaXNicGtzM25saXcifQ.G9cUWgFtRkJlVN7XID3_ZQ"; // Replace with your Mapbox access token
+mapboxgl.accessToken = APIKey;
 
 const Map = (props) => {
   const mapContainerRef = useRef(null);

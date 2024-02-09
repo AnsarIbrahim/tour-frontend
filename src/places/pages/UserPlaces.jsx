@@ -5,8 +5,10 @@ import PlaceList from "../components/PlaceList";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { BaseUrl } from "../../Redux/BaseUrl";
 
 const UserPlaces = () => {
+  const backendUrl = BaseUrl;
   const [loadedPlaces, setLoadedPlaces] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -16,13 +18,13 @@ const UserPlaces = () => {
     const fetchPlaces = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/places/user/${userId}`
+          `${backendUrl}/places/user/${userId}`
         );
         setLoadedPlaces(responseData.place);
       } catch (error) {}
     };
     fetchPlaces();
-  }, [sendRequest, userId]);
+  }, [sendRequest, userId, backendUrl]);
 
   const placeDeleteHandler = (deletedPlaceId) => {
     setLoadedPlaces((prevPlaces) =>
