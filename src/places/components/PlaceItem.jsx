@@ -8,12 +8,12 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import Map from "../../shared/components/UIElements/Map";
 import { AuthContext } from "../../shared/context/Auth-Context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import { BaseUrl, AssetsUrl } from "../../Redux/BaseUrl";
+import { BaseUrl } from "../../Redux/BaseUrl";
 import "./CSS/PlaceItem.css";
 
 const PlaceItem = (props) => {
   const backendUrl = BaseUrl;
-  const assetUrl = AssetsUrl;
+  const imageUrl = `data:image/jpeg;base64,${props.image.toString("base64")}`;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
@@ -70,7 +70,7 @@ const PlaceItem = (props) => {
         <Card className="place-item__content">
           {isLoading && <LoadingSpinner asOverlay />}
           <div className="place-item__image">
-            <img src={`${assetUrl}/${props.image}`} alt={props.title} />
+            <img src={imageUrl} alt={props.title} />
           </div>
           <div className="place-item__info">
             <h2>{props.title}</h2>
