@@ -30,7 +30,8 @@
 
 ## Responsive View
 
-![fixmate]()
+TourApp Image ![Screenshot 2024-02-09 at 12 49 20 PM (2)](https://github.com/AnsarIbrahim/tour-frontend/assets/117971223/90a8d828-beb2-49bc-864e-e5e1d985106e)
+
 
 ## Live Link
 
@@ -42,9 +43,8 @@
 
 > - API Endpoints
 
-- API/v1/experts
-- API/v1/reservations
-- API/v1/specializations
+- api/users
+- api/places
   > - [API Documentation](https://documenter.getpostman.com/view/27096897/2s9YyzcdBM)
 
 > - [Link to Back-end Repository](https://github.com/AnsarIbrahim/tour-backend)
@@ -196,7 +196,7 @@ The collaborators of this project.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> - We would like to thank EveryOne.
+> - I would like to thank EveryOne.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
