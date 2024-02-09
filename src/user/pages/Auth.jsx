@@ -14,10 +14,11 @@ import {
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/Auth-Context";
+import { BaseUrl } from "../../Redux/BaseUrl";
 import "./CSS/Auth.css";
 
 const Auth = () => {
-  const baseUrl = process.env.REACT_APP_BACKEND_URL;
+  const baseUrl = BaseUrl;
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -42,7 +43,7 @@ const Auth = () => {
     if (isLoginMode) {
       try {
         const responseData = await sendRequest(
-          baseUrl + "/users/login",
+          `${baseUrl}/users/login`,
           "POST",
           JSON.stringify({
             email: formState.inputs.email.value,
@@ -62,7 +63,7 @@ const Auth = () => {
         formData.append("password", formState.inputs.password.value);
         formData.append("image", formState.inputs.image.value);
         const responseData = await sendRequest(
-          baseUrl + "/users/signup",
+          `${baseUrl}/users/signup`,
           "POST",
           formData
         );

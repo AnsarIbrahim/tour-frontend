@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 
 import Avatar from "../../shared/components/UIElements/Avatar";
 import Card from "../../shared/components/UIElements/Card";
+import { AssetsUrl } from "../../Redux/BaseUrl";
 import "./UserItem.css";
 
 const UserItem = (props) => {
-  const assetUrl = process.env.REACT_APP_ASSET_URL;
+  const assetUrl = AssetsUrl;
   return (
     <li className="user-item">
       <Card className="user-item__content">

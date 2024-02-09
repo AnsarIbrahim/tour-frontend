@@ -8,11 +8,12 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import Map from "../../shared/components/UIElements/Map";
 import { AuthContext } from "../../shared/context/Auth-Context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { BaseUrl, AssetsUrl } from "../../Redux/BaseUrl";
 import "./CSS/PlaceItem.css";
 
 const PlaceItem = (props) => {
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const assetUrl = process.env.REACT_APP_ASSET_URL;
+  const backendUrl = BaseUrl;
+  const assetUrl = AssetsUrl;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);

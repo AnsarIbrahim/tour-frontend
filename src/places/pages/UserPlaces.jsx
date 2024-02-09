@@ -5,9 +5,10 @@ import PlaceList from "../components/PlaceList";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { BaseUrl } from "../../Redux/BaseUrl";
 
 const UserPlaces = () => {
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const backendUrl = BaseUrl;
   const [loadedPlaces, setLoadedPlaces] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
